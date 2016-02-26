@@ -15,10 +15,18 @@ var pgSession         = require('connect-pg-simple');
 var session           = require('express-session');
 pry                   = require ('pryjs');
 
-var app                = express();
+var app               = express();
+//uncomment below when route is created
+// var userRoutes        = require( path.join(__dirname, '/routes/users'));
 
 dotenv.load();
 app.use(express.static('./public/'));
+
+app.use(bodyParser.urlencoded( { extended:false } ));
+app.use(bodyParser.json());
+
+app.use(methodOverride('_method'));
+
 app.use(morgan('short'));
 
 app.set ('view engine', 'ejs');
