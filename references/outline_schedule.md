@@ -8,11 +8,11 @@
 - set up git repository  ✅
 - add issues ✅
 - research issues and do them correctly  ✅
-- draw out the paths really well and clearly - do this on draw io? or somewhere else?
-- research sql and start sketching out the best way to create the schema.sql and maybe write the seed.sql - just to get a feel for what I am creating/how to access it/what will it 'look' like.
-- look at what pg promise is
-- look into css frameworks
-- create gitignore file and test it out
+- draw out the paths really well and clearly - do this on draw io? or somewhere else? 🔀tomorrow
+- research sql and start sketching out the best way to create the schema.sql and maybe write the seed.sql - just to get a feel for what I am creating/how to access it/what will it 'look' like. 🔀tomorrow
+- look at what pg promise is 🔀tomorrow
+- look into css frameworks 🔀tomorrow
+- create gitignore file and test it out ✅
   https://gist.github.com/octocat/9257657
 
 
@@ -83,18 +83,37 @@ bcrypt.genSalt(10, function(err, salt) {
 
   NOTE: add a checkmark for each module that has been successfully implemented/tested
 
+git repository set up via step by step instructions provided on github after pressing new repository button
+
+
+git add .
+git commit -m 'meaningful message'
+git push origin master
+http://readwrite.com/2013/10/02/github-for-beginners-part-2
+
+
+NOTE: db name = flashcards
+
 
 ### Friday February 26:
 
-- make directory  ✅
-- put it on git  ✅
+- make directory  ✅ (completed Thursday)
+- put it on git  ✅(completed Thursday)
 - update erd and save it to png - upload it to git?
-- add Colin, Peter & Jason as collaborators  ✅
-- set up server ✅
-- set up database and tables  be sure to add time stamps and dates stuff
-- connect the database to the server
-- enter some dummy data
-- create routes
+- add Colin, Peter & Jason as collaborators  ✅(completed Thursday)
+- set up server ✅(completed Thursday)
+- set up database and tables  be sure to add time stamps and dates stuff ??skip this? need to take care of more pressing issues
+- create schema.sql ✅
+- create seed.sql ✅
+- create some dummy data in the database to render on the page ✅
+
+- connect the database to the server✅
+- enter some dummy data✅
+- create routes: see userstories expanded for reference of what to create now
+- expanded user stories to make for actionable code type things✅
+- oof - forgot to create a new branch and work on it! made notes to this to check on that daily✅
+- tried to work on users and authentication, but it didn't work out, switched gears, talked to Jason, made new strategy for the weekend✅
+
 - get something to display on the routes
 - add a little css
 - consider ejs today or tomorrow?
@@ -106,6 +125,7 @@ bcrypt.genSalt(10, function(err, salt) {
 
 
 ### Saturday February 27:
+- check to make sure you are working on a branch!
 - the create route!
 - the edit route!
 - super awesome goal for the day: delete and update route
@@ -116,6 +136,7 @@ bcrypt.genSalt(10, function(err, salt) {
 - update this schedule
 
 ### Sunday February 28:
+- check to make sure you are working on a branch!
 - keep working on everything above and hopefully finish the above
 - update readme
 - update issues
@@ -123,6 +144,7 @@ bcrypt.genSalt(10, function(err, salt) {
 
 
 ### Monday February 29:
+- check to make sure you are working on a branch!
 hopefully be done and polishing.
 See if I can create the study view/portion of the app
 - update readme

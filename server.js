@@ -3,6 +3,11 @@
 
 }());
 
+
+var howdy = 'howdy!';
+
+
+
 var bodyParser        = require('body-parser');
 var db                = require('./db/pg');
 var dotenv            = require ('dotenv');
@@ -27,17 +32,31 @@ app.use(bodyParser.json());
 
 app.use(methodOverride('_method'));
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(morgan('short'));
 
 app.set ('view engine', 'ejs');
 
 
 app.get('/', function(req,res){
-  res.send('Hello there');
+  console.log ('yes');
+  res.render('pages/home.ejs', {
+    howdy:howdy
+  });
+});
+
+//temporary for testing db connectivity
+app.get('/cards', db.showCards, function (req, res){
+  res.send ('show cards, eventually', res.rows);
+});
+
+app.get('/cards/new', db.addCards, function (req, res){
+  res.send ('add a new card, eventually', res.rows);
 });
 
 
 
-
 var port = process.env.PORT || 3000;
-var server = app.listen(port);
+var server = app.listen(port, () =>
+  console.log ('Flash! ', port, '//', new Date()));
