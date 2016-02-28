@@ -11,10 +11,10 @@
     <h2>A look at one card</h2>
       <div class="card" id="one-card"> <ul>
     <li class="side_one"> <%= cards.side_one %> </li>
-    <p> </p><p> </p><p> </p>
+    <p> </p><p> </p><p></p>
   <li class="side_two">  <%= cards.side_two %></li>
 </div>
-<form action="/cards?_method=PUT" method="post">
+<form action="/cards/<%= cards.id %>?_method=PUT" method="post">
   <label for ="side_one"> Side One </label>
   <input type="text" name="side_one" placeholder="word">
   <label for ="side_two"> Side Two </label>

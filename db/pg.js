@@ -115,7 +115,7 @@ function updateCards (req,res,next) {
       return res.status(500).json({success:false, data:err});
     }
     var data= {side_one: req.body.side_one, side_two: req.body.side_two};
-    var query = client.query('UPDATE cards SET side_one= ($1), side_two=($2) WHERE id=($3)', [req.body.side_one, req.body.side_two, req.body.id],(err,results)=>{
+    var query = client.query('UPDATE cards SET side_one=$1, side_two=$2 WHERE id=$3', [req.body.side_one, req.body.side_two, req.params.id],(err,results)=>{
       done();
       if (err){
         return console.error('error running query', err);

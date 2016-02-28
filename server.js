@@ -103,11 +103,11 @@ app.get('/cards/:id', db.showCards, function (req,res){
   });
 });
 
-app.put ('/cards', db.updateCards, function(req, res){
+app.put ('/cards/:id', db.updateCards, function(req, res){
   var id = req.params.id;
-  var data = req.params;
+  var data = res.rows;
   console.log(data);
-  res.send('u did it! u went to edit!')
+  res.redirect('/cards/list');
 })
 
 app.delete('/cards', db.deleteCards, function (req,res){
