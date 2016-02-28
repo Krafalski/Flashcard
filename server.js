@@ -13,13 +13,12 @@ var path              = require ('path');
 var pg                = require('pg');
 var pgSession         = require('connect-pg-simple');
 var session           = require('express-session');
+var connectionString ='postgres://karolinrafalski:' + process.env.DB_PASSWORD + '@localhost/flashcards';
 pry                   = require ('pryjs');
 
 var app               = express();
-//uncomment below when route is created
-// var userRoutes        = require( path.join(__dirname, '/routes/users'));
 
-
+var userRoutes = require( path.join(__dirname, '/routes/users'));
 
 var howdy = 'howdy!';
 var username ='Karolin';
@@ -43,11 +42,26 @@ app.set ('view engine', 'ejs');
 
 var stub = (req, res)=> res.send( req.method + ' method called. But functionality not added yet');
 
+var session = require('express-session');
+var pgSession = require('connect-pg-simple')(session);
+
+app.use(session({
+  store: new pgSession({
+    pg : pg,
+    conString : connectionString,
+    tableName : 'session'
+  }),
+  secret: 'sooosecrett', // look into changing/savig with dotenv.
+  resave: false,
+  cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 } // 30 days
+}));
+
+app.use('/users', userRoutes);
 
 app.get('/', function(req,res){
   res.render('pages/home.ejs', {
     howdy:howdy,
-    username:username
+    user: req.session.user
   });
 });
 
@@ -97,7 +111,7 @@ app.get('/cards/study', (req, res)=>{
 
 app.get('/cards/:id', db.showCards, function (req,res){
   var id = req.params.id-1;
-  console.log(id)
+  console.log(id);
   res.render ('pages/cards_one.ejs', {
     cards: res.cards[id],
     username:username
@@ -106,11 +120,11 @@ app.get('/cards/:id', db.showCards, function (req,res){
 
 app.put ('/cards/:id', db.updateCards, function(req, res){
   res.redirect('/cards/list');
-})
+});
 
 app.delete('/cards/:id', db.deleteCards, function (req,res){
   res.redirect('/cards/list');
-})
+});
 
 //
 app.get('/cards/:id/edit', db.showCards, (req, res)=>{

@@ -9,9 +9,9 @@ CREATE TABLE users (
   id SERIAL UNIQUE PRIMARY KEY,
   email VARCHAR (225),
   password_digest TEXT,
-  user_name (VARCHAR 50)
+  user_name VARCHAR (50)
 
-)
+);
 
 -- from node-connect-pg-simple https://github.com/voxpelli/node-connect-pg-simple/blob/master/table.sql
 

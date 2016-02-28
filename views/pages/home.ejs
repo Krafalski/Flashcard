@@ -11,14 +11,15 @@
     <h2>This is the home page </h2>
       <div class="container">
     <p> <%= howdy %></p>
+    <p> <% if (user){ %>
+      <h3> Welcome <%= user.email %>
+        <% } %>
     <div class ="login">
-      <div> Login  </div>
-      <div>  <input type="text" name="name" value=""></div>
-      <div> Password <input type="text" name="name" value=""></div>
-      <button>submit</button>
+        <a href="/users/login"><button class="edit">Log in</button></a>
+      </div>
     </div>
     <div class ="newuser">
-      <button>New user</button>
+      <a href="/users/new"><button class="edit">New User</button></a>
     </div>
 </div>
 </body>
