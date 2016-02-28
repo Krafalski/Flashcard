@@ -3,11 +3,6 @@
 
 }());
 
-
-var howdy = 'howdy!';
-
-
-
 var bodyParser        = require('body-parser');
 var db                = require('./db/pg');
 var dotenv            = require ('dotenv');
@@ -24,6 +19,14 @@ var app               = express();
 //uncomment below when route is created
 // var userRoutes        = require( path.join(__dirname, '/routes/users'));
 
+
+
+var howdy = 'howdy!';
+var username ='Karolin';
+
+
+
+
 dotenv.load();
 app.use(express.static('./public/'));
 
@@ -38,22 +41,90 @@ app.use(morgan('short'));
 
 app.set ('view engine', 'ejs');
 
+var stub = (req, res)=> res.send( req.method + ' method called. But functionality not added yet');
+
 
 app.get('/', function(req,res){
-  console.log ('yes');
   res.render('pages/home.ejs', {
-    howdy:howdy
+    howdy:howdy,
+    username:username
   });
 });
 
+//eventually...
+//app.use('/cards', cardRoutes)
+
 //temporary for testing db connectivity
-app.get('/cards', db.showCards, function (req, res){
-  res.send ('show cards, eventually', res.rows);
+app.get('/cards', function (req, res){
+  res.render ('pages/options.ejs',{
+    username:username
+  });
 });
 
-app.get('/cards/new', db.addCards, function (req, res){
-  res.send ('add a new card, eventually', res.rows);
+app.get('/cards/list', db.showCards, function(req, res){
+  res.render ('pages/cards.ejs', {
+    cards: res.cards,
+    username:username
+  });
 });
+
+app.get('/signup', (req,res)=>{
+  res.send ('show sign up page, eventually');
+});
+
+app.get('/logout', (req, res)=>{
+  res.render ('pages/logout.ejs',{
+    username:username
+  });
+});
+
+app.get('/cards/new', function (req, res){
+  res.render ('pages/cards_new.ejs',{
+    username:username
+  });
+});
+
+app.post('/cards/new', db.addCards, function(req,res) {
+//res.send ("u did it u posted")
+  res.redirect('/cards/list');
+});
+
+app.get('/cards/study', (req, res)=>{
+  res.render ('pages/study.ejs',{
+    username:username
+  });
+});
+
+app.get('/cards/:id', db.showCards, function (req,res){
+  var id = req.params.id-1;
+  res.render ('pages/cards_one.ejs', {
+    cards: res.cards[id],
+    username:username
+  });
+});
+
+app.put ('/cards', db.updateCards, function(req, res){
+  var id = req.params.id;
+  var data = req.params;
+  console.log(data);
+  res.send('u did it! u went to edit!')
+})
+
+app.delete('/cards', db.deleteCards, function (req,res){
+  res.send ('u did it u went to delete!')
+  res.redirect('/cards/list');
+})
+
+//
+app.get('/cards/:id/edit', db.showCards, (req, res)=>{
+  res.render ('pages/cards_one.ejs', res.rows);
+});
+
+
+
+
+
+
 
 
 

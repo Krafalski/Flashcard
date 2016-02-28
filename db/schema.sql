@@ -1,6 +1,7 @@
 -- database name is flashcards
 
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS cards;
 
 -- create db flashcards;
 

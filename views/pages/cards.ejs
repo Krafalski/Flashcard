@@ -3,9 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>All Cards</title>
-      <link href="/css/styles.css" rel="stylesheet">
+        <%- include ../partials/head %>
 </head>
 <body>
 
+  <%- include ../partials/nav %>
+  <div class="container">
+    <h2>A list of all your cards!</h2>
+
+      <% for(var i=0; i<cards.length ; i++) { %>
+        <div class="card">
+          <ul>
+    <li class="side_one"> <a href=/cards/<%= cards[i].id %> class="side_one"> <%= cards[i].side_one %></a></li>
+    <p></p>
+      <li class="side_two"> <%= cards[i].side_two %></li>
+
+    </div>
+       <% }; %>
+    </ul>
+  </div>
 </body>
 </html>
