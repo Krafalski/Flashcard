@@ -16,9 +16,9 @@
 </div>
 <form action="/cards/<%= cards.id %>?_method=PUT" method="post">
   <label for ="side_one"> Side One </label>
-  <input type="text" name="side_one" placeholder="word">
+  <input type="text" name="side_one" placeholder="word" value= <%= cards.side_one %>>
   <label for ="side_two"> Side Two </label>
-  <input type="text" name="side_two" placeholder="definition">
+  <input type="text" name="side_two" placeholder="definition" value= <%= cards.side_two %>>
   <input type="submit" vaule="Edit" class="edit">
 </form>
 
