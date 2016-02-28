@@ -3,9 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Make a New Card</title>
-      <link href="/css/styles.css" rel="stylesheet">
+        <%- include ../partials/head %>
 </head>
 <body>
 
+  <%- include ../partials/nav %>
+    <h2> Make a new card!</h2>
+    <form action="/cards/new" method="post">
+    <label for ="side_one"> Side One </label>
+    <input type="text" name="side_one" placeholder="word">
+    <label for ="side_two"> Side Two </label>
+    <input type="text" name="side_two" placeholder="definition">
+    <input type="submit" vaule="submit" class="edit">
+</form>
+
+<a href="/cards"><button class="cancel">Cancel</button></a>
 </body>
 </html>

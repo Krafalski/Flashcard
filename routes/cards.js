@@ -3,7 +3,7 @@
 
 }());
 
-var howdy = 'howdy!';
+
 
 
 var express       = require('express');

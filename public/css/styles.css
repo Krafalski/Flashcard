@@ -1,3 +1,200 @@
+
+/****************************************************
+* GENERAL
+****************************************************/
+* {
+  /*font-family: 'Droid Sans', sans-serif;*/
+  /*font-family: 'Slabo 27px', serif;*/
+  font-family: 'Indie Flower', cursive;
+}
+
 body {
-  backgroud-color: grey;
+  /*background-color: #b6e9ff;*/
+  color: #00117a ;
+}
+
+
+h1 {
+color: #00117a;
+margin-left: 20px;
+font-size: 2em;
+text-shadow: 1px 1px 1px blue;
+}
+
+h2 {
+  margin-left:20px;
+}
+
+p {
+  padding:1px;
+  margin: 5px;
+}
+
+a {
+  text-decoration: none;
+  color: #b6e9ff;
+  font-size: 2em;
+  text-shadow: 1px 1px 1px blue;
+}
+
+.bar a:hover {
+  color:#3c49a0;
+}
+
+li {
+  list-style-type: none;
+}
+
+button {
+  border-radius:100px;
+  background-color:#00117a ;
+  border: black;
+  margin: 20px 0 0 30px;
+  color:white;
+}
+
+label {
+  margin-left:10px;
+}
+
+
+input {
+  color: black;
+}
+/****************************************************
+* FLEX BOX
+
+GRATITUDE! and awknowldegement:
+https://css-tricks.com/flexbox-nav-bar-fixed-variable-take-rest-elements/
+****************************************************/
+/**, *:before, *:after {
+  box-sizing:inherit;
+}*/
+
+html {
+  box-sizing: border-box;
+}
+.flashcards {
+  flex-grow:4;
+  /*background-color: dodgerblue;*/
+  margin-left: 50px;
+  display: inline-block;
+  text-size: 1.5em;
+  color: darkblue;
+}
+h1:hover {
+  color:darkblue;
+  text-shadow: 1px 1px 1px ;
+}
+.header {
+  /*background: #00b2ff;*/
+  padding: 10px;
+  margin-top: -10px;
+  margin-left: -10px;
+  position: absolule;
+}
+
+
+.bar {
+  display:flex;
+  align-items: flex-end;
+  /*background-color:#00b2ff;*/
+  background-color: #000011;
+  margin: -10px;
+  margin-bottom:20px;
+  width:100%;
+  padding: 20px;
+  text-decoration: none;
+}
+
+
+.space {
+  flex-grow:5;
+}
+.username {
+  flex-direction: -2;
+  margin:10px;
+  flex-grow:1;
+}
+
+.nav-list {
+  margin:10px;
+  flex-grow:1;
+}
+
+.nav-study {
+  margin:10px;
+  flex-grow:1;
+}
+
+.nav-new-card {
+  margin:10px;
+  flex-grow:1;
+}
+
+
+.nav-logout {
+  margin:10px;
+  margin-right:30px;
+}
+
+.container{
+  flex-wrap:wrap;
+  display: inline-flex;
+  align-content:flex-start;
+}
+/****************************************************
+* cards
+****************************************************/
+.edit {
+  border-radius:100px;
+  background-color:#00117a ;
+  border: black;
+  margin: 20px 0 0 30px;
+  color: white;
+}
+
+.side_two {
+  color: #657aff;
+  text-size: .05em;
+  margin: 0px 0px 0px 10px;
+}
+
+.side_one {
+  color:#00117a ;
+}
+
+.break {
+  color:#00117a;
+}
+
+form {
+  display:inline;
+}
+.cancel {
+  font-size: 0.55em;
+}
+.card {
+  order:1;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  margin-top:50px;
+  width: 300px;
+  font-size: 0.7em;
+  color: grey;
+  background-color: #fff6e6;
+/*http://www.cssmatic.com/box-shadow*/
+  -webkit-box-shadow: 5px 4px 21px 5px rgba(0,0,0,0.56);
+-moz-box-shadow: 5px 4px 21px 5px rgba(0,0,0,0.56);
+box-shadow: 5px 4px 21px 5px rgba(0,0,0,0.56);
+align-items: center;
+}
+
+#one-card {
+  font-size: 3em;
+  width: 800px;
+  flex-grow 2;
+  margin:auto;
+
 }
