@@ -3,10 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Home</title>
-      <link href="/css/styles.css" rel="stylesheet">
+  <%- include ../partials/head %>
 </head>
 <body>
-  This is the home page
-<%= howdy %>
+<%- include ../partials/nav %>
+
+    <h2>This is the home page </h2>
+      <div class="container">
+    <p> <%= howdy %></p>
+    <div class ="login">
+      <div> Login  </div>
+      <div>  <input type="text" name="name" value=""></div>
+      <div> Password <input type="text" name="name" value=""></div>
+      <button>submit</button>
+    </div>
+    <div class ="newuser">
+      <button>New user</button>
+    </div>
+</div>
 </body>
 </html>
