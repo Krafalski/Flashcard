@@ -97,6 +97,7 @@ app.get('/cards/study', (req, res)=>{
 
 app.get('/cards/:id', db.showCards, function (req,res){
   var id = req.params.id-1;
+  console.log(id)
   res.render ('pages/cards_one.ejs', {
     cards: res.cards[id],
     username:username
@@ -104,14 +105,10 @@ app.get('/cards/:id', db.showCards, function (req,res){
 });
 
 app.put ('/cards/:id', db.updateCards, function(req, res){
-  var id = req.params.id;
-  var data = res.rows;
-  console.log(data);
   res.redirect('/cards/list');
 })
 
-app.delete('/cards', db.deleteCards, function (req,res){
-  res.send ('u did it u went to delete!')
+app.delete('/cards/:id', db.deleteCards, function (req,res){
   res.redirect('/cards/list');
 })
 
