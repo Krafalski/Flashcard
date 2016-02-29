@@ -13,8 +13,12 @@ var path              = require ('path');
 var pg                = require('pg');
 var pgSession         = require('connect-pg-simple');
 var session           = require('express-session');
+
+if (process.env.NODE_ENV === 'production'){
+  var connectionString = process.env.DATABASE_URL;
+} else {
 var connectionString ='postgres://karolinrafalski:' + process.env.DB_PASSWORD + '@localhost/flashcards';
-pry                   = require ('pryjs');
+}
 
 var app               = express();
 

@@ -1,5 +1,11 @@
 var pg = require('pg');
+
+if (process.env.NODE_ENV  === 'production'){
+  var connectionString = process.env.DATABASE_URL;
+} else {
 var connectionString ='postgres://karolinrafalski:' + process.env.DB_PASSWORD + '@localhost/flashcards';
+}
+
 var session = require('express-session');
 var bcrypt = require('bcrypt');
 var salt = bcrypt.genSaltSync(10);
@@ -107,6 +113,7 @@ function showCards (req, res, next){
   });
 }
 
+//does not work- trying to fix it- should be called with .get('/cards/:id')
 function showCard (req, res, next){
   pg.connect(connectionString, function (err, client, done){
     //console.log(client)
