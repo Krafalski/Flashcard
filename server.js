@@ -19,12 +19,10 @@ pry                   = require ('pryjs');
 var app               = express();
 
 var userRoutes = require( path.join(__dirname, '/routes/users'));
+var cardsRoutes = require( path.join(__dirname, '/routes/cards'));
 
 var howdy = 'howdy!';
 var username ='Karolin';
-
-
-
 
 dotenv.load();
 app.use(express.static('./public/'));
@@ -66,21 +64,19 @@ app.get('/', function(req,res){
 });
 
 //eventually...
-//app.use('/cards', cardRoutes)
+app.use('/cards', cardsRoutes)
 
 //temporary for testing db connectivity
-app.get('/cards', function (req, res){
-  res.render ('pages/options.ejs',{
-    username:username
-  });
-});
+// app.get('/cards', function (req, res){
+//   res.render ('pages/options.ejs',{
+//   });
+// });
 
-app.get('/cards/list', db.showCards, function(req, res){
-  res.render ('pages/cards.ejs', {
-    cards: res.cards,
-    username:username
-  });
-});
+// app.get('/cards/list', db.showCards, function(req, res){
+//   res.render ('pages/cards.ejs', {
+//     cards: res.cards,
+//   });
+// });
 
 app.get('/signup', (req,res)=>{
   res.send ('show sign up page, eventually');
@@ -88,33 +84,34 @@ app.get('/signup', (req,res)=>{
 
 app.get('/logout', (req, res)=>{
   res.render ('pages/logout.ejs',{
-    username:username
   });
 });
 
-app.get('/cards/new', function (req, res){
-  res.render ('pages/cards_new.ejs',{
-    username:username
-  });
-});
+//need to move everything /cards to cards.js so that thre is log-in functionality - show the cards to the user, show no cards to someone who is not logged in, have user make cards and see their cards and edit/delete their cards
 
-app.post('/cards/new', db.addCards, function(req,res) {
-//res.send ("u did it u posted")
-  res.redirect('/cards/list');
-});
+//below was moved to cards.js and works
 
-app.get('/cards/study', (req, res)=>{
-  res.render ('pages/study.ejs',{
-    username:username
-  });
-});
+// app.get('/cards/new', function (req, res){
+//   res.render ('pages/cards_new.ejs',{
+//   });
+// });
+
+// app.post('/cards/new', db.addCards, function(req,res) {
+//   res.redirect('/cards/list');
+// });
+
+// app.get('/cards/study', (req, res)=>{
+//   res.render ('pages/study.ejs',{
+//   });
+// });
+
+//above was moved to cards.js and works
 
 app.get('/cards/:id', db.showCards, function (req,res){
   var id = req.params.id-1;
   console.log(id);
   res.render ('pages/cards_one.ejs', {
     cards: res.cards[id],
-    username:username
   });
 });
 
@@ -126,7 +123,7 @@ app.delete('/cards/:id', db.deleteCards, function (req,res){
   res.redirect('/cards/list');
 });
 
-//
+
 app.get('/cards/:id/edit', db.showCards, (req, res)=>{
   res.render ('pages/cards_one.ejs', res.rows);
 });

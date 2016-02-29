@@ -2,6 +2,7 @@
 
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS cards;
+DROP TABLE IF EXISTS session;
 
 -- create db flashcards;
 

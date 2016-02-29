@@ -125,27 +125,29 @@ NOTE: db name = flashcards
 
 
 ### Saturday February 27:
-- check to make sure you are working on a branch!
-- the create route!
+- check to make sure you are working on a branch!✅
+- the create route! ✅
 - the edit route!
 - super awesome goal for the day: delete and update route
-- create the nav bar
-- do some css
+- create the nav bar ✅
+- do some css ✅
 - update readme
 - update issues
-- update this schedule
+- update this schedule ✅
 
 ### Sunday February 28:
-- check to make sure you are working on a branch!
-- keep working on everything above and hopefully finish the above
+- check to make sure you are working on a branch! ✅
+- keep working on everything above and hopefully finish the above ✅
 - update readme
-- update issues
+- update issues ✅
 - update this schedule
 
 
 ### Monday February 29:
 - check to make sure you are working on a branch!
-hopefully be done and polishing.
+hopefully be done and polishing.- ha ha ha
+- try to create sessions and have user be user logged in on every page
+- have user see only user cards
 See if I can create the study view/portion of the app
 - update readme
 - update issues
