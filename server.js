@@ -63,8 +63,8 @@ app.get('/', function(req,res){
   });
 });
 
-//eventually...
-app.use('/cards', cardsRoutes)
+
+app.use('/cards', cardsRoutes);
 
 //temporary for testing db connectivity
 // app.get('/cards', function (req, res){
@@ -107,6 +107,18 @@ app.get('/logout', (req, res)=>{
 
 //above was moved to cards.js and works
 
+
+//new code new function db.showCard
+//function db.showCard seems to have an error?
+// app.get('/cards/:id', db.showCards, function (req, res){
+//   res.render('pages/cards_one.ejs', {
+//     cards: res.cards[0]
+//   });
+// });
+
+//testing out above to maybe replace this which is wonky
+//does not work if a card has been deleted and a card after
+//the deleted card is clicked on
 app.get('/cards/:id', db.showCards, function (req,res){
   var id = req.params.id-1;
   console.log(id);

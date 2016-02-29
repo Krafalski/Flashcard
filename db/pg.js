@@ -107,7 +107,26 @@ function showCards (req, res, next){
   });
 }
 
-function updateCards (req,res,next) {
+function showCard (req, res, next){
+  pg.connect(connectionString, function (err, client, done){
+    //console.log(client)
+    if(err){
+      done();
+      console.log(err);
+      return res.status(500).json({success:false, data:err});
+    }
+    var query = client.query('SELECT * FROM cards ORDER BY id', function (err, result){
+      done();
+    if (err){
+      return console.error('error running query', err);
+     }
+     res.cards = result.rows;
+     next();
+    });
+  });
+}
+
+function updateCards (req, res, next) {
   pg.connect(connectionString, function (err, client, done){
     if(err){
       done();
