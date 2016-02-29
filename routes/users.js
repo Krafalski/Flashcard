@@ -13,8 +13,7 @@ users.post('/', db.createUser,(req, res)=>{
 });
 
 users.get('/new', (req, res)=> {
-  res.render( 'pages/new.html.ejs');
-  //html wants to go to users right now- change to??
+  res.render('pages/new.html.ejs');
 });
 
 users.get('/login', (req, res)=> {
@@ -30,8 +29,8 @@ users.post('/login', db.loginUser, (req, res)=>{
 
 users.delete('/logout', (req,res) => {
   req.session.destroy(function(err) {
-    res.redirect('/')
-  })
-})
+    res.redirect('/');
+  });
+});
 
 module.exports = users;
