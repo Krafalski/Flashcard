@@ -118,6 +118,7 @@ html {
   padding: 20px;
   text-decoration: none;
   box-shadow: 5px 4px 10px 5px rgba(0,0,0,0.2);
+  postion:absolute;
 }
 
 .login {

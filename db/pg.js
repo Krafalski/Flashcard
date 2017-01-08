@@ -50,7 +50,6 @@ function createSecure(email, password, callback) {
 }
 
 
-
 function createUser(req, res, next) {
   createSecure(req.body.email, req.body.password, saveUser);
 
@@ -61,7 +60,6 @@ function createUser(req, res, next) {
         console.log(err);
         return res.status(500).json({success: false, data: err});
       }
-
       var query = client.query("INSERT INTO users( email, password_digest) VALUES ($1, $2);", [email, hash], function(err, result) {
         done();
         if (err) {
@@ -72,7 +70,6 @@ function createUser(req, res, next) {
     });
   }
 }
-
 
 
 function addCards (req, res, next){
@@ -94,9 +91,9 @@ function addCards (req, res, next){
   });
 }
 
+//works shows all cards
 function showCards (req, res, next){
   pg.connect(connectionString, function (err, client, done){
-    //console.log(client)
     if(err){
       done();
       console.log(err);
@@ -115,6 +112,7 @@ function showCards (req, res, next){
 
 //does not work- trying to fix it- should be called with .get('/cards/:id')
 function showCard (req, res, next){
+  console.log('showCard being called');
   pg.connect(connectionString, function (err, client, done){
     //console.log(client)
     if(err){
@@ -122,7 +120,8 @@ function showCard (req, res, next){
       console.log(err);
       return res.status(500).json({success:false, data:err});
     }
-    var query = client.query('SELECT * FROM cards ORDER BY id', function (err, result){
+    var query = client.query('SELECT * FROM cards WHERE id=$1',[req.params.id], function (err, result){
+      console.log('this is query' , query);
       done();
     if (err){
       return console.error('error running query', err);
@@ -146,7 +145,6 @@ function updateCards (req, res, next) {
       if (err){
         return console.error('error running query', err);
        }
-       //console.log('u did it!', query)
        next();
     });
   });
@@ -173,6 +171,7 @@ function deleteCards (req,res,next) {
 module.exports.createUser = createUser;
 module.exports.loginUser = loginUser;
 module.exports.showCards = showCards;
+module.exports.showCard = showCard;
 module.exports.addCards = addCards;
 module.exports.deleteCards = deleteCards;
 module.exports.updateCards = updateCards;
