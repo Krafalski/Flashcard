@@ -73,11 +73,11 @@ cards.get('/:id', db.showCard, function (req,res){
   res.render ('pages/cards_one.ejs', {cards: res.cards});
 });
 
-cards.put ('/cards/:id', db.updateCards, function(req, res){
+cards.put ('/:id', db.updateCards, function(req, res){
   res.redirect('/cards/list');
 });
 
-cards.delete('/cards/:id', db.deleteCards, function (req,res){
+cards.delete('/:id', db.deleteCards, function (req,res){
   res.redirect('/cards/list');
 });
 
