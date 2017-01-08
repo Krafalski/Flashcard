@@ -56,6 +56,7 @@ app.use(session({
     pg : pg,
     conString : connectionString,
     tableName : 'session',
+    resave: false,
     saveUninitialzed: true
   }),
   secret: 'sooosecrett', // look into changing/saving with dotenv.

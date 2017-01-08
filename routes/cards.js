@@ -38,7 +38,6 @@ cards.get('/list', db.showCards, function(req, res){
 
 cards.get('/new', function (req, res){
   res.render ('pages/cards_new.ejs',{
-
   });
 });
 
@@ -48,7 +47,6 @@ cards.post('/new', db.addCards, function(req,res) {
 
 cards.get('/study', (req, res)=>{
   res.render ('pages/study.ejs',{
-
   });
 });
 
@@ -70,12 +68,9 @@ cards.get('/study', (req, res)=>{
 //this is showing one card
 cards.get('/:id', db.showCard, function (req,res){
   console.log('in this one /:id');
-  res.send('yo')
   var id = req.params.id;
-  console.log('this the id in this one' ,id);
-  res.render ('pages/cards_one.ejs', {
-    cards: res.cards[id],
-  });
+  console.log('this the id in this one' , res.cards);
+  res.render ('pages/cards_one.ejs', {cards: res.cards});
 });
 
 cards.put ('/cards/:id', db.updateCards, function(req, res){

@@ -105,6 +105,7 @@ function showCards (req, res, next){
       return console.error('error running query', err);
      }
      res.cards = result.rows;
+    //  console.log('this is res.cards' ,res.cards)
      next();
     });
   });
@@ -121,12 +122,13 @@ function showCard (req, res, next){
       return res.status(500).json({success:false, data:err});
     }
     var query = client.query('SELECT * FROM cards WHERE id=$1',[req.params.id], function (err, result){
-      console.log('this is query' , query);
+      console.log('this is result' , result.rows[0].side_one);
       done();
     if (err){
       return console.error('error running query', err);
      }
-     res.cards = result.rows;
+     res.cards = result.rows[0];
+
      next();
     });
   });
