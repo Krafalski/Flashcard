@@ -51,12 +51,12 @@ var session = require( 'express-session' );
 var pgSession = require( 'connect-pg-simple' )(session);
 
 app.use( session({
+    resave: false,
+    saveUninitialized: true,
     store: new pgSession({
     pg : pg,
     conString : connectionString,
     tableName : 'session',
-    resave: false,
-    saveUninitialzed: true
   }),
   secret: 'sooosecrett', // look into changing/saving with dotenv.
   resave: false,
