@@ -9,16 +9,19 @@
 
   <%- include ../partials/nav %>
     <h2>A look at one card</h2>
-      <div class="card" id="one-card"> <ul>
+    <div class="card" id="one-card"> <ul>
     <li class="side_one"> <%= cards.side_one %> </li>
     <p> </p><p> </p><p></p>
   <li class="side_two">  <%= cards.side_two %></li>
 </div>
+
 <form action="/cards/<%= cards.id %>?_method=PUT" method="post">
-  <label for ="side_one"> Side One </label>
+  <label for ="side_one"><p><strong>   Edit your card!     </strong> </p>Side One </label>
   <input type="text" name="side_one" placeholder="word" value= "<%= cards.side_one %>">
-  <label for ="side_two"> Side Two </label>
+  <p></p>
+  <label for ="side_two">Side Two </label>
   <input type="text" name="side_two" placeholder="definition" value="<%= cards.side_two %>">
+  <p></P>
   <input type="submit" vaule="Edit" class="edit">
 </form>
 

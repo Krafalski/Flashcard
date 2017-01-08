@@ -7,19 +7,17 @@
 </head>
 <body>
 <%- include ../partials/nav %>
-
-    <h2>This is the home page </h2>
+  <div>  <h2>This is the home page </h2></div>
       <div class="container">
-    <p> <%= howdy %></p>
     <p> <% if (user){ %>
-      <h3> Welcome <%= user.email %>
-        <% } %>
+      <h3> Welcome <%= user.email %> !
+        <% } %> </h3>
     <div class ="login">
         <a href="/users/login"><button class="edit">Log in</button></a>
-      </div>
     </div>
     <div class ="newuser">
       <a href="/users/new"><button class="edit">New User</button></a>
+    </div>
     </div>
 </div>
 </body>
