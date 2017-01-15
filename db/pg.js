@@ -1,5 +1,5 @@
 //DEPENDENCIES
-var pg = require( 'pg' );
+var pg                = require( 'pg' );
 
 //ENVIRONMENTAL VARIABLES
 if ( process.env.NODE_ENV  === 'production' ){
@@ -9,9 +9,10 @@ var connectionString ='postgres://karolinrafalski:' + process.env.DB_PASSWORD + 
 }
 
 //SESSIONS/BCRYPT
-var session = require( 'express-session' );
-var bcrypt = require( 'bcrypt' );
-var salt = bcrypt.genSaltSync(10);
+var session            = require( 'express-session' );
+var bcrypt             = require( 'bcrypt' );
+const saltRounds       = 10;
+// var salt = bcrypt.genSaltSync(10);
 
 function loginUser ( req, res, next ){
   var email = req.body.email;
@@ -41,7 +42,7 @@ function loginUser ( req, res, next ){
 
 function createSecure( email, password, callback ) {
   // hashing the password given by the user at signup
-  bcrypt.genSalt( function( err, salt ) {
+  bcrypt.genSalt( saltRounds, function( err, salt ) {
     bcrypt.hash( password, salt, function( err, hash ) {
       // this callback saves the user to our database
       // with the hashed password

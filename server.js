@@ -1,7 +1,6 @@
 //IFFE
 (function() {
   'use strict';
-
 }());
 
 // DEPENDENCIES
@@ -68,6 +67,7 @@ app.use( session({
 app.use( '/users' , userRoutes );
 
 app.get( '/' , ( req, res ) => {
+  console.log(req.session.user);
   res.render('pages/home.ejs', {
     user: req.session.user
   });
