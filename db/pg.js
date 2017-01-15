@@ -55,7 +55,7 @@ function createSecure( email, password, callback ) {
 
 
 function createUser( req, res, next ) {
-  createSecure(req.body.email, req.body.password, saveUser);
+  createSecure( req.body.email, req.body.password, saveUser);
 
   function saveUser( email, hash ) {
     pg.connect( connectionString, function( err, client, done ) {
@@ -64,7 +64,7 @@ function createUser( req, res, next ) {
         console.log( err );
         return res.status( 500 ).json( { success: false, data: err });
       }
-      var query = client.query( "INSERT INTO users( email, password_digest ) VALUES ( $1, $2 );", [email, hash], function( err, result ) {
+      var query = client.query( "INSERT INTO users( user_name, email, password_digest ) VALUES ( $1, $2, $3 );", [req.body.user_name, email, hash], function( err, result ) {
         done();
         if ( err ) {
           return console.error( 'error running query' , err);

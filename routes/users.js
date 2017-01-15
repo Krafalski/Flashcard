@@ -1,26 +1,31 @@
+//IFFE
 (function() {
   'use strict';
 
 }());
 
+//DEPENDENCIES
 var express         = require('express');
 var users           = express.Router();
 var bodyParser      = require('body-parser');
 var db              = require ('./../db/pg');
 
-users.post('/', db.createUser,(req, res)=>{
+
+
+//ROUTES
+users.post('/', db.createUser,( req, res )=>{
   res.redirect('/');
 });
 
-users.get('/new', (req, res)=> {
+users.get('/new', ( req, res )=> {
   res.render('pages/new.html.ejs');
 });
 
-users.get('/login', (req, res)=> {
+users.get('/login', ( req, res )=> {
   res.render('pages/login.html.ejs');
 });
 
-users.post('/login', db.loginUser, (req, res)=>{
+users.post('/login', db.loginUser, ( req, res )=>{
   req.session.user = res.rows;
   req.session.save(function(){
     res.redirect('/');
